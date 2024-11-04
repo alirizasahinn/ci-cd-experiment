@@ -1,12 +1,21 @@
-// const { getWeek, getYear } = require("date-fns");
-const yup = require("yup");
+const express = require("express");
 
-const schema = yup.number().required();
+async function startServer() {
+  const app = express();
+
+  app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+  });
+}
+
 (async () => {
   try {
-    console.log(await schema.validate(null));
+    await startServer();
+
+    console.log("Server started successfully");
+    console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+    console.log("process.env.EXAMPLE", process.env.EXAMPLE);
   } catch (error) {
-    a;
-    console.error(error.errors);
+    console.error(error.message);
   }
 })();
